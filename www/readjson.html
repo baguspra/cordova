@@ -1,0 +1,67 @@
+<html>
+
+<head>
+      <style>
+ul {
+  list-style-type: none;
+  margin: 0;
+  padding: 0;
+  overflow: hidden;
+  background-color: #333;
+}
+
+li {
+  float: left;
+}
+
+li a {
+  display: block;
+  color: white;
+  text-align: center;
+  padding: 14px 16px;
+  text-decoration: none;
+}
+
+li a:hover {
+  background-color: #111;
+}
+
+</style>
+    <link rel="stylesheet" type="text/css" href="css/ionic.css">
+    <script type="text/javascript" src="js/jquery.js"></script>
+    <script type="text/javascript">
+    $(document).ready(function() {
+        var url = "https://pegw.000webhostapp.com/uas-master/uas-master/www/json.php";
+        $.getJSON(url, function(result) {
+            console.log(result);
+            $.each(result, function(i, field) {
+                var id_baak = field.id_baak;
+                var nama_baak = field.nama_baak;
+                var telp = field.telp;
+                var email = field.email;
+                var alamat = field.alamat;
+                
+                $("#listview").append("<a class='item' href='form.html?id_baak=" + id_baak + "&nama_baak=" + nama_baak +  "&email=" + email +"&telp=" + telp + "&alamat=" + alamat +  "'><span class='item-note'>" + alamat + "</span><h2>" + nama_baak + " </h2><p>" + email + "</p></a>");
+    
+                
+            });
+        });
+    });
+    </script>
+</head>
+
+<body>
+    <ul>
+                        <li><a href="index.html">Home</a></li>
+                        <li><a href="readjsondosen.html">Dosen JSON</a></li>
+                        <li><a href="readjson.html">Baak JSON</a></li>
+                        <li ><a href="insertdosen.html">Tambah Dosen</a></li >
+</ul>
+
+<center>
+    <h3>Data Baak</h3></center>
+    <ul class="list" id="listview">
+    </ul>
+</body>
+
+</html>
